@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
 
 public class BasicConfiguration extends Configuration {
 
@@ -18,6 +19,13 @@ public class BasicConfiguration extends Configuration {
 
 	@JsonProperty
 	private String appName = "This is a default value";
+
+	@JsonProperty
+	private DataSourceFactory database = new DataSourceFactory();
+
+	public DataSourceFactory getDataSourceFactory() {
+		return database;
+	}
 
 	public String getMessage() {
 		return message;
