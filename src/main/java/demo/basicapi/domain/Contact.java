@@ -2,15 +2,25 @@ package demo.basicapi.domain;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.dropwizard.validation.ValidationMethod;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Contact implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private long id;
+
+	@NotBlank
 	private String firstName;
+	@NotBlank
 	private String lastName;
+	@NotBlank
+	@Length(min = 2, max = 30)
 	private String phone;
 
 	public Contact(long id, String firstName, String lastName, String phone) {
@@ -62,6 +72,15 @@ public class Contact implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@ValidationMethod(message = "John Doe is not a valid person!")
+	public boolean isPersonValid() {
+		if (firstName.equals("John") && lastName.equals("Doe")) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override
