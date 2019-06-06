@@ -1,8 +1,7 @@
 package demo.basicapi.configuration;
 
 import javax.validation.constraints.Max;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,10 +10,10 @@ import io.dropwizard.Configuration;
 public class BasicConfiguration extends Configuration {
 
 	@JsonProperty
-	@Max(10)
+	@NotNull
 	private String message;
 	@JsonProperty
-	@NotEmpty
+	@Max(10)
 	private int messageRepetitions;
 
 	@JsonProperty
