@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import demo.basicapi.configuration.BasicConfiguration;
+import demo.basicapi.rest.ContactsResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -28,5 +29,6 @@ public class App extends Application<BasicConfiguration> {
 		for (int i = 0; i < c.getMessageRepetitions(); i++) {
 			System.out.println(c.getMessage());
 		}
+		e.jersey().register(new ContactsResource());
 	}
 }
