@@ -1,11 +1,13 @@
 package demo.basicapi.configuration;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.dropwizard.Configuration;
+import io.dropwizard.client.JerseyClientConfiguration;
 import io.dropwizard.db.DataSourceFactory;
 
 public class BasicConfiguration extends Configuration {
@@ -38,5 +40,17 @@ public class BasicConfiguration extends Configuration {
 	public String getAppName() {
 		return appName;
 	}
+	
+  
+    
+    
+    @Valid
+    @NotNull
+    @JsonProperty
+    private JerseyClientConfiguration httpClient = new JerseyClientConfiguration();
+
+    public JerseyClientConfiguration getJerseyClientConfiguration() {
+        return httpClient;
+    }
 
 }

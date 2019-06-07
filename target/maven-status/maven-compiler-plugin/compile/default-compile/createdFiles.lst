@@ -1,1 +1,5 @@
-demo/basicapi/App.class
+demo/basicapi/domain/Contact.class
+demo/basicapi/mappers/ContactMapper.class
+demo/basicapi/configuration/BasicConfiguration.class
+demo/basicapi/dao/ContactDao.class
+demo/basicapi/rest/ContactsResource.class
