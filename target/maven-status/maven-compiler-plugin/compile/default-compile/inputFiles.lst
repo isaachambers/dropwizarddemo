@@ -1,7 +1,10 @@
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/configuration/BasicConfiguration.java
+/Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/auth/AppAuthorizer.java
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/rest/ContactsResource.java
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/mappers/ContactMapper.java
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/App.java
+/Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/auth/User.java
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/domain/Contact.java
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/dao/ContactDao.java
 /Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/rest/ClientResource.java
+/Users/isaack/dropwizard_ws/BasicMicroservice/basicapi/src/main/java/demo/basicapi/auth/ApplicationAuthenticator.java
