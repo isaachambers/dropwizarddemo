@@ -2,14 +2,21 @@ package demo.basicapi;
 
 import javax.ws.rs.client.Client;
 
+import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.skife.jdbi.v2.DBI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import demo.basicapi.auth.AppAuthorizer;
+import demo.basicapi.auth.ApplicationAuthenticator;
+import demo.basicapi.auth.User;
 import demo.basicapi.configuration.BasicConfiguration;
 import demo.basicapi.rest.ClientResource;
 import demo.basicapi.rest.ContactsResource;
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
+import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
@@ -45,6 +52,14 @@ public class App extends Application<BasicConfiguration> {
 		final Client client = new JerseyClientBuilder(e).using(c.getJerseyClientConfiguration()).using(e)
 				.build("REST Client");
 		e.jersey().register(new ClientResource(client));
+		// ****** Dropwizard security - custom classes ***********/
+		// Security Features will be demonstrated on the ClientResource class
+		e.jersey()
+				.register(new AuthDynamicFeature(
+						new BasicCredentialAuthFilter.Builder<User>().setAuthenticator(new ApplicationAuthenticator())
+								.setAuthorizer(new AppAuthorizer()).setRealm("BASIC-AUTH-REALM").buildAuthFilter()));
+		e.jersey().register(RolesAllowedDynamicFeature.class);
+		e.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
 
 	}
 }
